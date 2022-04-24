@@ -26,13 +26,13 @@ const buildGraph = (edges) => {
  */
 
 const returnShortestPath = (src,dest)=>{
-    let queue = [];
+    let queue = [];//utilizing the queue that will store the path as well as the distance upto that point in the form ['xyz',2]
     let graph = buildGraph(edges);
-    let visitedNodes = new Set();
+    let visitedNodes = new Set();//keeping the visited nodes list so that we dont run into infinite loop due to cycles in graph
     queue.push([src,0]);
     while (queue.length > 0){
-        let [current,distance] = queue.shift();
-        let currentNode = current.split("").pop();
+        let [current,distance] = queue.shift();//extracting the first element from the queue
+        let currentNode = current.split("").pop();//extracting the last element that is added to path( z in 'xyz')
         visitedNodes.add(currentNode);
         if (currentNode == dest) return [current,distance];
         for (let neighbour of graph[currentNode]){
@@ -42,7 +42,7 @@ const returnShortestPath = (src,dest)=>{
             }
         }
     }
-    return ("no path found");
+    return (-1);//returning -1 if no path is found between source and destination
 }
 
 console.log(returnShortestPath('w','z'));
