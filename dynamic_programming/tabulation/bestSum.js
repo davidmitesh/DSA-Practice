@@ -8,7 +8,7 @@ const bestSum = (sumTarget,numbers) => {
                 const current = table[i+number];
                 const change = [...table[i],number];
 
-                if (current == null || change.length < current.length) table[i+number] = change;
+                if (current === null || change.length < current.length) table[i+number] = change;
             }
         }
     }

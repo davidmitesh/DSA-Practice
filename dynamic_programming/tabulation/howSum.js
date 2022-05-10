@@ -12,7 +12,7 @@
  * 
  */
 
-
+//time complexity in this case is O(m^2*n) and space complexity is O(m^2)
 const howSum = (targetSum,numbers) => {
     const table = Array(targetSum+1).fill(null);
     table[0] = [];
@@ -20,7 +20,7 @@ const howSum = (targetSum,numbers) => {
     for (let i=0 ; i<=targetSum;i++){
         if (table[i] !== null){
             for (let number of numbers){
-                table[i+number] = [...table[i],number];
+                table[i+number] = [...table[i],number];//this can take O(m) complexity
             }
         }
     }
@@ -29,3 +29,5 @@ const howSum = (targetSum,numbers) => {
 }
 
 console.log(howSum(7,[1,2,3]));
+console.log(howSum(300,[7,14]));
+console.log(howSum(8,[2,3,5]));
